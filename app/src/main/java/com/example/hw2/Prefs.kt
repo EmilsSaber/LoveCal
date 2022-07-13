@@ -10,7 +10,6 @@ class Prefs ( context: Context) {
 
     fun isShown(): Boolean {
         return preferences.getBoolean("isShown", false)
-
     }
 
 }

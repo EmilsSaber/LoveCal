@@ -26,7 +26,6 @@ class AppModule {
         return Retrofit.Builder().baseUrl("https://love-calculator.p.rapidapi.com/")
             .addConverterFactory(GsonConverterFactory.create()).build().create(LoveApi::class.java)
 
-
     }
     @Singleton
 @Provides
@@ -34,20 +33,15 @@ fun  provideAppDataBase(@ApplicationContext context: Context) :AppDataBase {
 
      return Room.databaseBuilder(context,AppDataBase::class.java ,"database").
 allowMainThreadQueries().fallbackToDestructiveMigration().build()
-        
+
     }
     @Singleton
     @Provides
     fun provideHistoryDao(appDataBase: AppDataBase):HistoryDao{
         return appDataBase.historyDao()
     }
-   /* @Provides
-    fun providePrefs(context: Context) : SharedPreferences? {
-        return context.getSharedPreferences("setting",Context.MODE_PRIVATE)
-            .also { Prefs().preferences = it }
-    }*/
 
-    }
+}
 
 
 
